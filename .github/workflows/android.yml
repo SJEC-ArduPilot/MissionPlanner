@@ -28,6 +28,7 @@ jobs:
             !**.so
             !**.aab
             !**.dll
+            !jl
           key: ${{ runner.os }}-buildAAB
 
       - name: Build
@@ -68,7 +69,7 @@ jobs:
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: com.michaeloborne.MissionPlanner.aab.zip
           path: ExtLibs\Xamarin\Xamarin.Android\bin\Release\*.aab
@@ -104,6 +105,7 @@ jobs:
             !**.so
             !**.aab
             !**.dll
+            !jl
           key: ${{ runner.os }}-buildAPK
       - name: Build
         shell: pwsh
@@ -154,7 +156,7 @@ jobs:
         env:
           BUILD_TOOLS_VERSION: "31.0.0"
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: com.michaeloborne.MissionPlanner.apk.zip
           path: ExtLibs\Xamarin\Xamarin.Android\bin\Release/${{ github.event_name == 'push' && '*-signed.apk' || '*.apk' }}
