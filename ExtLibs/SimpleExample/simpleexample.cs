@@ -216,7 +216,7 @@ namespace SimpleExample
                 req2.current = 1;
                 req2.autocontinue = 0;
 
-                req2.frame = (byte)MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT;
+                req2.frame = (byte)MAVLink.MAV_FRAME.GLOBAL;
 
                 req2.y = (int) (115 * 1.0e7);
                 req2.x = (int) (-35 * 1.0e7);

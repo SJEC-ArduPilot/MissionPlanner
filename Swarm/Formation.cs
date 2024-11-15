@@ -298,7 +298,7 @@ namespace MissionPlanner.Swarm
                             // do pos/vel
                             port.setPositionTargetGlobalInt(mav.sysid, mav.compid, true,
                                 true, false, false,
-                                MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT_INT, target.Lat, target.Lng, target.Alt, vel.x,
+                                MAVLink.MAV_FRAME.GLOBAL_INT, target.Lat, target.Lng, target.Alt, vel.x,
                                 vel.y, vel.z, 0, 0);
 
                             // do yaw

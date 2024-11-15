@@ -238,7 +238,7 @@ namespace MissionPlanner.Utilities
             public int version { get; set; }
         }
 
-        public static RootObject ConvertFromLocationwps(List<Locationwp> list, byte frame = (byte)MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT)
+        public static RootObject ConvertFromLocationwps(List<Locationwp> list, byte frame = (byte)MAVLink.MAV_FRAME.GLOBAL)
         {
             RootObject temp = new RootObject()
             {

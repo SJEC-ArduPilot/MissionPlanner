@@ -4412,7 +4412,7 @@ namespace MissionPlanner.GCSViews
                 MainV2.comPort.doCommandInt((byte) MainV2.comPort.sysidcurrent, (byte) MainV2.comPort.compidcurrent,
                     MAVLink.MAV_CMD.DO_SET_ROI, 0, 0, 0, 0, (int) (MouseDownStart.Lat * 1e7),
                     (int) (MouseDownStart.Lng * 1e7),  ((intalt / CurrentState.multiplieralt)),
-                    frame: MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT);
+                    frame: MAVLink.MAV_FRAME.GLOBAL);
             }
             catch
             {

@@ -25,7 +25,7 @@ namespace MissionPlanner.Swarm
                 return;
 
             MavState.parent.setPositionTargetGlobalInt(MavState.sysid, MavState.compid, true, true, false, true,
-                MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT_INT, pos.Lat, pos.Lng, pos.Alt, vel.x, vel.y, vel.z, yaw * MathHelper.deg2rad,
+                MAVLink.MAV_FRAME.GLOBAL_INT, pos.Lat, pos.Lng, pos.Alt, vel.x, vel.y, vel.z, yaw * MathHelper.deg2rad,
                 yawrate);
         }
 
@@ -35,7 +35,7 @@ namespace MissionPlanner.Swarm
                 return;
 
             MavState.parent.setPositionTargetGlobalInt(MavState.sysid, MavState.compid, true, true, false, false,
-                MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT_INT, pos.Lat, pos.Lng, pos.Alt, vel.x, vel.y, vel.z, 0, 0);
+                MAVLink.MAV_FRAME.GLOBAL_INT, pos.Lat, pos.Lng, pos.Alt, vel.x, vel.y, vel.z, 0, 0);
         }
 
         public void SendVelocity(Vector3 vel)
@@ -44,7 +44,7 @@ namespace MissionPlanner.Swarm
                 return;
 
             MavState.parent.setPositionTargetGlobalInt(MavState.sysid, MavState.compid, false, true, false, false,
-                MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT_INT, 0, 0, 0, vel.x, vel.y, vel.z, 0, 0);
+                MAVLink.MAV_FRAME.GLOBAL_INT, 0, 0, 0, vel.x, vel.y, vel.z, 0, 0);
         }
 
         public void SendYaw(float heading)

@@ -97,7 +97,7 @@ namespace MissionPlanner.GCSViews
         public GMapMarker center = new GMarkerGoogle(new PointLatLng(0.0, 0.0), GMarkerGoogleType.none);
         private Dictionary<string, string[]> cmdParamNames = new Dictionary<string, string[]>();
         private GMapMarkerRect CurentRectMarker;
-        private altmode currentaltmode = (altmode) Settings.Instance.GetInt32("FPaltmode", (int)altmode.Relative);
+        private altmode currentaltmode = (altmode) Settings.Instance.GetInt32("FPaltmode", (int)altmode.Absolute);
         private GMapMarker CurrentGMapMarker;
         public GMapMarker currentMarker;
         private GMapMarkerPOI CurrentPOIMarker;
@@ -233,7 +233,7 @@ namespace MissionPlanner.GCSViews
             CMB_altmode.DataSource = EnumTranslator.EnumToList<altmode>();
 
             //set default
-            CMB_altmode.SelectedItem = altmode.Relative;
+            CMB_altmode.SelectedItem = altmode.Absolute;
 
             cmb_missiontype.DataSource = new List<MAVLink.MAV_MISSION_TYPE>()
                 {MAVLink.MAV_MISSION_TYPE.MISSION, MAVLink.MAV_MISSION_TYPE.FENCE, MAVLink.MAV_MISSION_TYPE.RALLY};
@@ -6084,7 +6084,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             }
 
             // define the default frame.
-            MAVLink.MAV_FRAME frame = MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT;
+            MAVLink.MAV_FRAME frame = MAVLink.MAV_FRAME.GLOBAL;
 
             // get the command list from the datagrid
             var commandlist = GetCommandList();

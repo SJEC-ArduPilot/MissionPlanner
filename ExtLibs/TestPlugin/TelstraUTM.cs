@@ -272,23 +272,23 @@ namespace MissionPlanner.Utilities
                 {
                     new MAVLink.mavlink_mission_item_int_t(0, 0, 0, 0, (int) (118 * 1e7), (int) (-35 * 1e7), 10, 0,
                         (ushort) MAVLink.MAV_CMD.WAYPOINT, 1, 1,
-                        (byte) MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION),
+                        (byte) MAVLink.MAV_FRAME.GLOBAL, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION),
                     new MAVLink.mavlink_mission_item_int_t(0, 0, 0, 0, (int) (118.1 * 1e7), (int) (-35.1 * 1e7), 10,
                         0,
                         (ushort) MAVLink.MAV_CMD.WAYPOINT, 1, 1,
-                        (byte) MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION),
+                        (byte) MAVLink.MAV_FRAME.GLOBAL, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION),
                     new MAVLink.mavlink_mission_item_int_t(0, 0, 0, 0, (int) (118.2 * 1e7), (int) (-35.2 * 1e7), 10,
                         0,
                         (ushort) MAVLink.MAV_CMD.WAYPOINT, 1, 1,
-                        (byte) MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION),
+                        (byte) MAVLink.MAV_FRAME.GLOBAL, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION),
                     new MAVLink.mavlink_mission_item_int_t(0, 0, 0, 0, (int) (118.1 * 1e7), (int) (-35.2 * 1e7), 10,
                         0,
                         (ushort) MAVLink.MAV_CMD.WAYPOINT, 1, 1,
-                        (byte) MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION),
+                        (byte) MAVLink.MAV_FRAME.GLOBAL, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION),
                     new MAVLink.mavlink_mission_item_int_t(0, 0, 0, 0, (int) (118.2 * 1e7), (int) (-35.1 * 1e7), 10,
                         0,
                         (ushort) MAVLink.MAV_CMD.WAYPOINT, 1, 1,
-                        (byte) MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION)
+                        (byte) MAVLink.MAV_FRAME.GLOBAL, 0, 0, (byte) MAVLink.MAV_MISSION_TYPE.MISSION)
                 });
             utm.GetFlightPlans();
             utm.StartMQTT(dev, @"C:\Users\michael\Desktop\Hex\laam-mqtt-control\Hardware\pi_zero\certs\ca.crt",

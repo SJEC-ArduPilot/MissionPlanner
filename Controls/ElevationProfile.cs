@@ -22,7 +22,7 @@ namespace MissionPlanner.Controls
         PointPairList list4terrain = new PointPairList();
         int distance = 0;
         double homealt = 0;
-        FlightPlanner.altmode altmode = FlightPlanner.altmode.Relative;
+        FlightPlanner.altmode altmode = FlightPlanner.altmode.Absolute;
 
         public ElevationProfile(List<PointLatLngAlt> locs, double homealt, FlightPlanner.altmode altmode)
         {
