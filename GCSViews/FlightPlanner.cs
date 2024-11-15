@@ -15,6 +15,7 @@ using MissionPlanner.Maps;
 using MissionPlanner.Plugin;
 using MissionPlanner.Properties;
 using MissionPlanner.Utilities;
+using MissionPlanner.Attributes;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 using SharpKml.Base;
@@ -412,8 +413,11 @@ namespace MissionPlanner.GCSViews
 
         public enum altmode
         {
+            [DisplayText("AGL")]
             Relative = MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT,
+            [DisplayText("MSL")]
             Absolute = MAVLink.MAV_FRAME.GLOBAL,
+            [DisplayText("Terrain")]
             Terrain = MAVLink.MAV_FRAME.GLOBAL_TERRAIN_ALT
         }
 
