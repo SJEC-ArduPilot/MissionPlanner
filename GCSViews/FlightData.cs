@@ -4392,7 +4392,7 @@ namespace MissionPlanner.GCSViews
 
             string alt = "0";
             if (DialogResult.Cancel == InputBox.Show("Enter Alt",
-                "Enter Target Alt (Relative to home)", ref alt))
+                "Enter Target Alt (MSL)", ref alt))
                 return;
 
             if (!float.TryParse(alt, out var intalt))
