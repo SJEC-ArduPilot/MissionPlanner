@@ -4384,13 +4384,13 @@ protected override void OnLoad(EventArgs e)
                 if (Settings.Instance["altunits"] != null)
                 {
                     switch (
-                        (distances) Enum.Parse(typeof(altitudes), Settings.Instance["altunits"].ToString()))
+                        (altitudes) Enum.Parse(typeof(altitudes), Settings.Instance["altunits"].ToString()))
                     {
-                        case distances.Meters:
+                        case altitudes.Meters:
                             CurrentState.multiplieralt = 1;
                             CurrentState.AltUnit = "m";
                             break;
-                        case distances.Feet:
+                        case altitudes.Feet:
                             CurrentState.multiplieralt = 3.2808399f;
                             CurrentState.AltUnit = "ft";
                             break;
@@ -4398,8 +4398,8 @@ protected override void OnLoad(EventArgs e)
                 }
                 else
                 {
-                    CurrentState.multiplieralt = 1;
-                    CurrentState.AltUnit = "m";
+                    CurrentState.multiplieralt = 3.2808399f;
+                    CurrentState.AltUnit = "ft";
                 }
 
                 // speed
