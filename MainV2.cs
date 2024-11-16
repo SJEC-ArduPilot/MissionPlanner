@@ -4431,8 +4431,8 @@ protected override void OnLoad(EventArgs e)
                 }
                 else
                 {
-                    CurrentState.multiplierspeed = 1;
-                    CurrentState.SpeedUnit = "m/s";
+                    CurrentState.multiplierspeed = 1.94384449f;
+                    CurrentState.SpeedUnit = "kts";
                 }
             }
             catch
