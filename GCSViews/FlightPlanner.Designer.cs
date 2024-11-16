@@ -107,6 +107,7 @@ namespace MissionPlanner.GCSViews
             this.AZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TagData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BUT_Add = new MissionPlanner.Controls.MyButton();
+            this.BUT_Elevation_Profile = new MissionPlanner.Controls.MyButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panelAction = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -428,6 +429,7 @@ namespace MissionPlanner.GCSViews
             this.panelWaypoints.Controls.Add(this.CHK_verifyheight);
             this.panelWaypoints.Controls.Add(this.TXT_WPRad);
             this.panelWaypoints.Controls.Add(this.BUT_Add);
+            this.panelWaypoints.Controls.Add(this.BUT_Elevation_Profile);
             resources.ApplyResources(this.panelWaypoints, "panelWaypoints");
             this.panelWaypoints.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panelWaypoints.Name = "panelWaypoints";
@@ -666,6 +668,12 @@ namespace MissionPlanner.GCSViews
             this.toolTip1.SetToolTip(this.BUT_Add, resources.GetString("BUT_Add.ToolTip"));
             this.BUT_Add.UseVisualStyleBackColor = true;
             this.BUT_Add.Click += new System.EventHandler(this.BUT_Add_Click);
+            //
+            // BUT_Elevation_Profile
+            //
+            this.BUT_Elevation_Profile.Name = "elevationGraphToolStripMenuItem";
+            resources.ApplyResources(this.BUT_Elevation_Profile, "elevationGraphToolStripMenuItem");
+            this.BUT_Elevation_Profile.Click += new System.EventHandler(this.elevationGraphToolStripMenuItem_Click);
             // 
             // splitter1
             // 
@@ -1605,6 +1613,7 @@ namespace MissionPlanner.GCSViews
         public Label lbl_status;
         public MyDataGridView Commands;
         public MyButton BUT_Add;
+        public MyButton BUT_Elevation_Profile;
         public Label LBL_WPRad;
         public Label LBL_defalutalt;
         public Label label5;

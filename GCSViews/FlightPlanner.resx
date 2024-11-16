@@ -1238,6 +1238,41 @@
   <data name="&gt;&gt;BUT_Add.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <!-- Begin BUT_Elevation_Profile -->
+  <data name="BUT_Elevation_Profile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BUT_Elevation_Profile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>533, 8</value>
+  </data>
+  <data name="BUT_Elevation_Profile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="BUT_Elevation_Profile.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="BUT_Elevation_Profile.Text" xml:space="preserve">
+    <value>Elevation Profile</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>172, 17</value>
+  </metadata>
+  <data name="BUT_Elevation_Profile.ToolTip" xml:space="preserve">
+    <value>Display Elevation Profile Graph</value>
+  </data>
+  <data name="&gt;&gt;BUT_Elevation_Profile.Name" xml:space="preserve">
+    <value>BUT_Elevation_Profile</value>
+  </data>
+  <data name="&gt;&gt;BUT_Elevation_Profile.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_Elevation_Profile.Parent" xml:space="preserve">
+    <value>panelWaypoints</value>
+  </data>
+  <data name="&gt;&gt;BUT_Elevation_Profile.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <!-- End BUT_Elevation_Profile -->
   <data name="panelWaypoints.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
