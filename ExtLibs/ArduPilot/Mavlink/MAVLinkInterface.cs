@@ -4353,7 +4353,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting
 
                 if (MAVlist[sysid, compid].cs.firmware == Firmwares.ArduPlane)
                 {
-                    MAV_MISSION_RESULT ans = setWP(sysid, compid, gotohere, 0, MAV_FRAME.GLOBAL_RELATIVE_ALT, (byte) 2);
+                    MAV_MISSION_RESULT ans = setWP(sysid, compid, gotohere, 0, MAV_FRAME.GLOBAL, (byte) 2);
 
                     if (ans != MAV_MISSION_RESULT.MAV_MISSION_ACCEPTED)
                     {
@@ -4391,7 +4391,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting
                 log.InfoFormat("setNewWPAlt {0}:{1} lat {2} lng {3} alt {4}", sysid, compid, gotohere.lat, gotohere.lng,
                     gotohere.alt);
 
-                MAV_MISSION_RESULT ans = setWP(sysid, compid, gotohere, 0, MAV_FRAME.GLOBAL_RELATIVE_ALT, (byte) 3);
+                MAV_MISSION_RESULT ans = setWP(sysid, compid, gotohere, 0, MAV_FRAME.GLOBAL, (byte) 3);
 
                 if (ans != MAV_MISSION_RESULT.MAV_MISSION_ACCEPTED)
                 {
@@ -5631,7 +5631,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting
                 MAVlist[rallypt.target_system, rallypt.target_component].rallypoints[rallypt.idx] =
                     new mavlink_mission_item_int_t(0, 0, 0, 0, rallypt.lat, rallypt.lng, rallypt.alt, rallypt.idx,
                         (ushort) MAV_CMD.RALLY_POINT, rallypt.target_system, rallypt.target_component,
-                        (byte) MAV_FRAME.GLOBAL_RELATIVE_ALT, 0, 0, (byte) MAV_MISSION_TYPE.RALLY);
+                        (byte) MAV_FRAME.GLOBAL, 0, 0, (byte) MAV_MISSION_TYPE.RALLY);
 
                 //Console.WriteLine("RP # {0} {1} {2} {3} {4}", rallypt.idx, rallypt.lat, rallypt.lng, rallypt.alt, rallypt.break_alt);
             }
@@ -5663,7 +5663,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting
                         fencept.idx == 0
                             ? (ushort) MAV_CMD.FENCE_RETURN_POINT
                             : (ushort) MAV_CMD.FENCE_POLYGON_VERTEX_INCLUSION,
-                        fencept.target_system, fencept.target_component, (byte) MAV_FRAME.GLOBAL_RELATIVE_ALT, 0, 0,
+                        fencept.target_system, fencept.target_component, (byte) MAV_FRAME.GLOBAL, 0, 0,
                         (byte) MAV_MISSION_TYPE.FENCE);
             }
             else if (buffer.msgid == (byte) MAVLINK_MSG_ID.PARAM_VALUE)
