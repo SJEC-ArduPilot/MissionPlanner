@@ -862,7 +862,7 @@ namespace MissionPlanner.GCSViews
             0,
             0});
             this.modifyandSetAlt.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
@@ -873,7 +873,7 @@ namespace MissionPlanner.GCSViews
             0});
             this.modifyandSetAlt.Name = "modifyandSetAlt";
             this.modifyandSetAlt.Value = new decimal(new int[] {
-            100,
+            5000,
             0,
             0,
             0});
