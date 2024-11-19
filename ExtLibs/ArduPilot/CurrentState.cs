@@ -1055,6 +1055,7 @@ namespace MissionPlanner
                 if (_alt_error == value) return;
                 _alt_error = value;
                 targetalt = targetalt * 0.5f + (float)Math.Round(alt + alt_error, 0) * 0.5f;
+                targetaltasl = targetaltasl * 0.5f + (float)Math.Round(altasl + alt_error, 0) * 0.5f;
             }
         }
 
@@ -1200,6 +1201,8 @@ namespace MissionPlanner
         [GroupText("NAV")] public float targetaltd100 => targetalt / 100 % 10;
         [GroupText("NAV")]
         public float targetalt { get; private set; }
+        [GroupText("NAV")]
+        public float targetaltasl { get; private set; }
 
         [JsonIgnore]
         [IgnoreDataMember]
@@ -2425,6 +2428,7 @@ namespace MissionPlanner
                             alt = altasl - (float)HomeAlt;
                             alt_error = highlatency.target_altitude - alt;
                             targetalt = highlatency.target_altitude;
+                            targetaltasl = highlatency.target_altitude + (float)HomeAlt;
                             wp_dist = highlatency.target_distance;
                             wpno = highlatency.wp_num;
 
