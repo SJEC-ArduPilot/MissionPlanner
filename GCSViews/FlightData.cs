@@ -3718,7 +3718,7 @@ namespace MissionPlanner.GCSViews
                             {
                                 var homeplla = new PointLatLngAlt(MainV2.comPort.MAV.cs.HomeLocation.Lat,
                                     MainV2.comPort.MAV.cs.HomeLocation.Lng,
-                                    MainV2.comPort.MAV.cs.HomeLocation.Alt / CurrentState.multiplieralt, "H");
+                                    MainV2.comPort.MAV.cs.HomeLocation.Alt, "H");
 
                                 if (homeplla.Lat == 0 && homeplla.Lng == 0)
                                 {
