@@ -4122,7 +4122,7 @@ namespace MissionPlanner.GCSViews
                                 MainV2.comPort.MAV.GuidedMode.x != 0)
                             {
                                 FlightPlanner.addpolygonmarker(this, "Guided Mode", MainV2.comPort.MAV.GuidedMode.y / 1e7,
-                                    MainV2.comPort.MAV.GuidedMode.x / 1e7, (int) MainV2.comPort.MAV.GuidedMode.z,
+                                    MainV2.comPort.MAV.GuidedMode.x / 1e7, (int) (MainV2.comPort.MAV.GuidedMode.z * CurrentState.multiplieralt),
                                     Color.Blue,
                                     routes);
                             }

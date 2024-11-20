@@ -6579,7 +6579,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 {
                     addpolygonmarker(this, "Guided Mode", MainV2.comPort.MAV.GuidedMode.y / 1e7,
                         MainV2.comPort.MAV.GuidedMode.x / 1e7,
-                        (int) MainV2.comPort.MAV.GuidedMode.z, Color.Blue, routesoverlay);
+                        (int) (MainV2.comPort.MAV.GuidedMode.z * CurrentState.multiplieralt), Color.Blue, routesoverlay);
                 }
             }
             catch (Exception ex)
