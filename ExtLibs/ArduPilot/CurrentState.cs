@@ -496,6 +496,8 @@ namespace MissionPlanner
         [GroupText("NAV")]
         public float targetairspeed { get; private set; }
 
+        public float targetairspeedwithmultiplier => targetairspeed * multiplierspeed;
+
         public bool lowairspeed { get; set; }
 
         [DisplayFieldName("asratio.Field")]
