@@ -308,7 +308,7 @@ namespace MissionPlanner {
         /// </summary>
         public static string ChangeThrottle {
             get {
-                return ResourceManager.GetString("ChangeThrottle", resourceCulture);
+                return ResourceManager.GetString("ChangeThrottle", resourceCulture) + " (%)";
             }
         }
         

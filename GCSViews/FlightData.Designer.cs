@@ -786,7 +786,7 @@ namespace MissionPlanner.GCSViews
             // modifyandSetLoiterRad
             // 
             resources.ApplyResources(this.modifyandSetLoiterRad, "modifyandSetLoiterRad");
-            this.modifyandSetLoiterRad.ButtonText = "Set Loiter Rad";
+            this.modifyandSetLoiterRad.ButtonText = $"Set Loiter Rad ({CurrentState.DistanceUnit})";
             this.modifyandSetLoiterRad.DecimalPlaces = 0;
             this.modifyandSetLoiterRad.Increment = new decimal(new int[] {
             1,
@@ -854,7 +854,7 @@ namespace MissionPlanner.GCSViews
             // modifyandSetAlt
             // 
             resources.ApplyResources(this.modifyandSetAlt, "modifyandSetAlt");
-            this.modifyandSetAlt.ButtonText = "Change Alt";
+            this.modifyandSetAlt.ButtonText = $"Change Alt ({CurrentState.AltUnit})";
             this.modifyandSetAlt.DecimalPlaces = 1;
             this.modifyandSetAlt.Increment = new decimal(new int[] {
             1,
@@ -882,7 +882,7 @@ namespace MissionPlanner.GCSViews
             // modifyandSetSpeed
             // 
             resources.ApplyResources(this.modifyandSetSpeed, "modifyandSetSpeed");
-            this.modifyandSetSpeed.ButtonText = "Change Speed";
+            this.modifyandSetSpeed.ButtonText = $"Change Speed ({CurrentState.SpeedUnit})";
             this.modifyandSetSpeed.DecimalPlaces = 1;
             this.modifyandSetSpeed.Increment = new decimal(new int[] {
             1,
