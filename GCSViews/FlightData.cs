@@ -4302,7 +4302,7 @@ namespace MissionPlanner.GCSViews
             try
             {
                 await MainV2.comPort.doCommandAsync(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
-                        MAVLink.MAV_CMD.DO_CHANGE_SPEED, 0, (float) modifyandSetSpeed.Value, 0, 0, 0, 0, 0)
+                        MAVLink.MAV_CMD.DO_CHANGE_SPEED, 0, (float)modifyandSetSpeed.Value * CurrentState.multiplierspeed, 0, 0, 0, 0, 0)
                     .ConfigureAwait(true);
             }
             catch
