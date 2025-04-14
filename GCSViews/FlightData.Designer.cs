@@ -35,6 +35,7 @@ namespace MissionPlanner.GCSViews
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.multiLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabQuick = new System.Windows.Forms.TabPage();
+            this.gaugeCluster = new GaugeCluster();
             this.tableLayoutPanelQuick = new System.Windows.Forms.TableLayoutPanel();
             this.quickView6 = new MissionPlanner.Controls.QuickView();
             this.contextMenuStripQuickView = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -344,6 +345,7 @@ namespace MissionPlanner.GCSViews
             this.hud1.critSSA = 30F;
             this.hud1.current = 0F;
             this.hud1.current2 = 0F;
+            this.gaugeCluster.DataBindings.Add("Data", this.bindingSourceHud, "", true, DataSourceUpdateMode.OnPropertyChanged);
             this.hud1.DataBindings.Add(new System.Windows.Forms.Binding("airspeed", this.bindingSourceHud, "airspeed", false));
             this.hud1.DataBindings.Add(new System.Windows.Forms.Binding("alt", this.bindingSourceHud, "altasl", false));
             this.hud1.DataBindings.Add(new System.Windows.Forms.Binding("load", this.bindingSourceHud, "load", false));
@@ -727,8 +729,23 @@ namespace MissionPlanner.GCSViews
             this.quickView1.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
             // 
             // tabActions
-            // 
-            this.tabActions.Controls.Add(this.tableLayoutPanel1);
+            //
+            tableLayoutPanel1.Dock = DockStyle.Top;
+            gaugeCluster.Dock = DockStyle.Fill;
+            var outerPanel = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                RowCount = 2,
+                ColumnCount = 1
+            };
+            outerPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            outerPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+            outerPanel.Controls.Add(tableLayoutPanel1, 0, 0);
+            outerPanel.Controls.Add(gaugeCluster, 0, 1);
+            tabActions.Controls.Clear();
+            tabActions.Controls.Add(outerPanel);
+
+            this.gaugeCluster.BringToFront();
             resources.ApplyResources(this.tabActions, "tabActions");
             this.tabActions.Name = "tabActions";
             this.tabActions.UseVisualStyleBackColor = true;
@@ -2949,6 +2966,7 @@ namespace MissionPlanner.GCSViews
         private Label lbl_playbackspeed;
         private System.Windows.Forms.ToolStripMenuItem setAspectRatioToolStripMenuItem;
         public System.Windows.Forms.TabPage tabQuick;
+        private GaugeCluster gaugeCluster;
         private Controls.QuickView quickView3;
         private Controls.QuickView quickView2;
         private Controls.QuickView quickView1;
