@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static alglib;
 
 namespace MissionPlanner.GCSViews
 {
@@ -55,7 +56,7 @@ namespace MissionPlanner.GCSViews
                     Dock = DockStyle.Top,
                     TextAlign = ContentAlignment.MiddleCenter,
                     ForeColor = Color.White,
-                    Font = new Font("Segoe UI", 8f, FontStyle.Bold)
+                    Font = new Font(SystemFonts.DefaultFont.Name, 8f, FontStyle.Bold)
                 };
                 var valueLabel = new Label
                 {
@@ -63,7 +64,7 @@ namespace MissionPlanner.GCSViews
                     Dock = DockStyle.Fill,
                     TextAlign = ContentAlignment.MiddleCenter,
                     ForeColor = Color.White,
-                    Font = new Font("Segoe UI", 12f, FontStyle.Bold)
+                    Font = new Font(SystemFonts.DefaultFont.Name, 12f, FontStyle.Bold)
                 };
                 panel.Controls.Add(valueLabel);
                 panel.Controls.Add(nameLabel);
@@ -81,10 +82,7 @@ namespace MissionPlanner.GCSViews
             set
             {
                 data = value;
-                if (data != null)
-                {
-                    UpdateData(data);
-                }
+                if (data != null) UpdateData(data);
             }
         }
 
@@ -204,17 +202,21 @@ namespace MissionPlanner.GCSViews
 
         private Color GetAirspeedColor(double spd)
         {
-            if (spd < 35) return Color.Red;
-            if (spd <= 40) return Color.Orange;
-            if (spd <= 60) return Color.Green;
-            if (spd <= 68) return Color.Orange;
+            double conversionFactor = 463.0 / 900.0; // knots to (m/s)
+            spd = spd / CurrentState.multiplierspeed;
+            if (spd < 35 * conversionFactor) return Color.Red;
+            if (spd <= 40 * conversionFactor) return Color.Orange;
+            if (spd <= 60 * conversionFactor) return Color.Green;
+            if (spd <= 68 * conversionFactor) return Color.Orange;
             return Color.Red;
         }
 
         private Color GetAGLColor(double alt)
         {
-            if (alt < 200) return Color.Red;
-            if (alt <= 300) return Color.Orange;
+            double conversionFactor = 381.0 / 1250.0; // feet to meters
+            alt = alt / CurrentState.multiplieralt;
+            if (alt < 200 * conversionFactor) return Color.Red;
+            if (alt <= 300 * conversionFactor) return Color.Orange;
             return Color.Green;
         }
 
@@ -238,8 +240,10 @@ namespace MissionPlanner.GCSViews
 
         private Color GetWindColor(double windSpeed)
         {
-            if (windSpeed < 25) return Color.Green;
-            if (windSpeed <= 35) return Color.Orange;
+            double conversionFactor = 463.0 / 900.0; // knots to (m/s)
+            windSpeed = windSpeed / CurrentState.multiplierspeed;
+            if (windSpeed < 25 * conversionFactor) return Color.Green;
+            if (windSpeed <= 35 * conversionFactor) return Color.Orange;
             return Color.Red;
         }
     }
