@@ -42,8 +42,8 @@ namespace MissionPlanner.GCSViews
                 "RPM", "Throttle %", "FPS (V)", "FPS (A)",
                 "CubeT (C)", "Cube (V)", "VPS (V)", "VPS (A)",
                 "OAT (C)", "VSI (ft/min)", "Dist. Home (nm)", "Time In Air",
-                "Airspeed", "AGL", "Laser Alt", "Link (%)",
-                "Arm/Disarm", "Dist. Travel (nm)", "Sats / HDOP", "Wind"
+                $"Airspeed ({CurrentState.SpeedUnit})", $"AGL ({CurrentState.AltUnit})", $"Laser Alt ({CurrentState.AltUnit})", "Link (%)",
+                "Arm/Disarm", "Dist. Travel (nm)", "Sats / HDOP", $"Wind ({CurrentState.SpeedUnit})",
             };
 
             foreach (var label in labels)
@@ -90,6 +90,8 @@ namespace MissionPlanner.GCSViews
 
         public void UpdateData(CurrentState state)
         {
+            Func<double, double> toNauticalMiles = (double distance) => distance / (CurrentState.multiplierdist * 1852.0);
+
             UpdateLabel("RPM", state.rpm1, GetRPMColor(state.rpm1));
             UpdateLabel("Throttle %", state.ch3percent, state.ch3percent <= 95 ? Color.Green : Color.Orange);
             UpdateLabel("FPS (V)", state.battery_voltage, GetFPSVoltageColor(state.battery_voltage));
@@ -100,16 +102,16 @@ namespace MissionPlanner.GCSViews
             UpdateLabel("VPS (A)", state.current2, GetVPSCurrentColor(state.current2));
             UpdateLabel("OAT (C)", state.airspeed1_temp, GetOATColor(state.airspeed1_temp));
             UpdateLabel("VSI (ft/min)", state.verticalspeed_fpm, GetVSIColor(state.verticalspeed_fpm));
-            UpdateLabel("Dist. Home (nm)", state.DistToHome, Color.Green);
+            UpdateLabel("Dist. Home (nm)", toNauticalMiles(state.DistToHome), Color.Green);
             UpdateLabel("Time In Air", TimeSpan.FromSeconds(state.timeInAirMinSec).ToString(@"mm\:ss"), Color.Green);
-            UpdateLabel("Airspeed", state.airspeed, GetAirspeedColor(state.airspeed));
-            UpdateLabel("AGL", state.alt, GetAGLColor(state.alt));
-            UpdateLabel("Laser Alt", state.sonarrange, Color.Green);
+            UpdateLabel($"Airspeed ({CurrentState.SpeedUnit})", state.airspeed, GetAirspeedColor(state.airspeed));
+            UpdateLabel($"AGL ({CurrentState.AltUnit})", state.alt, GetAGLColor(state.alt));
+            UpdateLabel($"Laser Alt ({CurrentState.AltUnit})", state.sonarrange, Color.Green);
             UpdateLabel("Link (%)", state.linkqualitygcs, GetLinkQualityColor(state.linkqualitygcs));
             UpdateLabel("Arm/Disarm", state.armed ? "ARMED" : "DISARMED", state.armed ? Color.Green : Color.Red);
-            UpdateLabel("Dist. Travel (nm)", state.distTraveled, Color.Green);
+            UpdateLabel("Dist. Travel (nm)", toNauticalMiles(state.distTraveled), Color.Green);
             UpdateLabel("Sats / HDOP", $"{state.satcount} / {state.gpshdop}", GetGPSColor(state.satcount, state.gpshdop));
-            UpdateLabel("Wind", state.wind_vel, GetWindColor(state.wind_vel));
+            UpdateLabel($"Wind ({CurrentState.SpeedUnit})", state.wind_vel, GetWindColor(state.wind_vel));
         }
 
         private void UpdateLabel(string key, double value, Color? backColor = null) => UpdateLabel(key, value.ToString("0.0"), backColor);
