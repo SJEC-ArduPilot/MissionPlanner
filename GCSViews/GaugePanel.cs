@@ -95,7 +95,7 @@ namespace MissionPlanner.GCSViews
             UpdateLabel("FPS (V)", state.battery_voltage, GetFPSVoltageColor(state.battery_voltage));
             UpdateLabel("FPS (A)", state.current, GetFPSCurrentColor(state.current));
             UpdateLabel("CubeT (C)", state.imu1_temp, GetAutopilotTempColor(state.imu1_temp));
-            UpdateLabel("Cube (V)", state.boardvoltage, GetAutopilotVoltageColor(state.boardvoltage));
+            UpdateLabel("Cube (V)", state.boardvoltage / 1000.0f, GetAutopilotVoltageColor(state.boardvoltage / 1000.0f));
             UpdateLabel("VPS (V)", state.battery_voltage2, GetVPSVoltageColor(state.battery_voltage2));
             UpdateLabel("VPS (A)", state.current2, GetVPSCurrentColor(state.current2));
             UpdateLabel("OAT (C)", state.airspeed1_temp, GetOATColor(state.airspeed1_temp));
