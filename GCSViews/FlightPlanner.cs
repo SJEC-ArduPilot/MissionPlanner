@@ -1347,6 +1347,16 @@ namespace MissionPlanner.GCSViews
 
         public void WPtoScreen(List<Locationwp> cmds)
         {
+            for (int i = 0; i < cmds.Count; i++)
+            {
+                var cmd = cmds[i];
+                if (cmd.id == getCmdID(MAVLink.MAV_CMD.DO_CHANGE_SPEED.ToString()))
+                {
+                    cmd.p2 *= CurrentState.multiplierspeed;
+                    cmds[i] = cmd;
+                }
+            }
+
             try
             {
                 Invoke((MethodInvoker) delegate
@@ -2033,11 +2043,17 @@ namespace MissionPlanner.GCSViews
             try
             {
                 if (cmdParamNames.ContainsKey(command))
+                {
                     for (int i = 1; i <= 7; i++)
                         Commands.Columns[i].HeaderText = cmdParamNames[command][i - 1];
+                    if (command == MAVLink.MAV_CMD.DO_CHANGE_SPEED.ToString())
+                        Commands.Columns[2].HeaderText = $"Speed ({CurrentState.SpeedUnit})";
+                }
                 else
+                {
                     for (int i = 1; i <= 7; i++)
                         Commands.Columns[i].HeaderText = "setme";
+                }
             }
             catch (Exception ex)
             {
@@ -3885,6 +3901,10 @@ namespace MissionPlanner.GCSViews
             for (int a = 0; a < Commands.Rows.Count - 0; a++)
             {
                 var temp = DataViewtoLocationwp(a);
+
+                if (temp.id == getCmdID(MAVLink.MAV_CMD.DO_CHANGE_SPEED.ToString()))
+                    temp.p2 /= CurrentState.multiplierspeed;
+
 
                 commands.Add(temp);
             }
