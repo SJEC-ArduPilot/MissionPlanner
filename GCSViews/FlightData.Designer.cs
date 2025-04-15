@@ -736,7 +736,8 @@ namespace MissionPlanner.GCSViews
             {
                 Dock = DockStyle.Fill,
                 RowCount = 2,
-                ColumnCount = 1
+                ColumnCount = 1,
+								AutoScroll = true,
             };
             outerPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             outerPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
