@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace MissionPlanner.GCSViews
 {
@@ -737,7 +738,8 @@ namespace MissionPlanner.GCSViews
                 Dock = DockStyle.Fill,
                 RowCount = 2,
                 ColumnCount = 1,
-								AutoScroll = true,
+                AutoScroll = true,
+                AutoScrollMinSize = new Size(0, 500),
             };
             outerPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             outerPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));

@@ -18,11 +18,6 @@ namespace MissionPlanner.GCSViews
 
         public GaugeCluster()
         {
-            InitLayout();
-        }
-
-        private void InitLayout()
-        {
             layout = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -44,7 +39,7 @@ namespace MissionPlanner.GCSViews
                 "CubeT (C)", "Cube (V)", "VPS (V)", "VPS (A)",
                 "OAT (C)", "VSI (ft/min)", "Dist. Home (nm)", "Time In Air",
                 $"Airspeed ({CurrentState.SpeedUnit})", $"AGL ({CurrentState.AltUnit})", $"Laser Alt ({CurrentState.AltUnit})", "Link (%)",
-                "Arm/Disarm", "Dist. Travel (nm)", "Sats / HDOP", $"Wind ({CurrentState.SpeedUnit})",
+                "Arm State", "Dist. Travel (nm)", "Sats / HDOP", $"Wind ({CurrentState.SpeedUnit})",
             };
 
             foreach (var label in labels)
@@ -106,7 +101,7 @@ namespace MissionPlanner.GCSViews
             UpdateLabel($"AGL ({CurrentState.AltUnit})", state.alt, GetAGLColor(state.alt));
             UpdateLabel($"Laser Alt ({CurrentState.AltUnit})", state.sonarrange, Color.Green);
             UpdateLabel("Link (%)", state.linkqualitygcs, GetLinkQualityColor(state.linkqualitygcs));
-            UpdateLabel("Arm/Disarm", state.armed ? "ARMED" : "DISARMED", state.armed ? Color.Green : Color.Red);
+            UpdateLabel("Arm State", state.armed ? "ARMED" : "DISARMED", state.armed ? Color.Green : Color.Red);
             UpdateLabel("Dist. Travel (nm)", toNauticalMiles(state.distTraveled), Color.Green);
             UpdateLabel("Sats / HDOP", $"{state.satcount} / {state.gpshdop}", GetGPSColor(state.satcount, state.gpshdop));
             UpdateLabel($"Wind ({CurrentState.SpeedUnit})", state.wind_vel, GetWindColor(state.wind_vel));
