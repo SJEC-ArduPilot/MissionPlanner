@@ -93,7 +93,10 @@ namespace MissionPlanner.GCSViews
             UpdateLabel("Cube (V)", state.boardvoltage / 1000.0f, GetAutopilotVoltageColor(state.boardvoltage / 1000.0f));
             UpdateLabel("VPS (V)", state.battery_voltage2, GetVPSVoltageColor(state.battery_voltage2));
             UpdateLabel("VPS (A)", state.current2, GetVPSCurrentColor(state.current2));
-            UpdateLabel("OAT (C)", state.airspeed1_temp, GetOATColor(state.airspeed1_temp));
+
+            var oat = state.airspeed1_temp / 100.0f;
+            UpdateLabel("OAT (C)", oat, GetOATColor(oat));
+
             UpdateLabel("VSI (ft/min)", state.verticalspeed_fpm, GetVSIColor(state.verticalspeed_fpm));
             UpdateLabel("Dist. Home (nm)", toNauticalMiles(state.DistToHome), Color.Green);
             UpdateLabel("Time In Air", TimeSpan.FromSeconds(state.timeInAirMinSec).ToString(@"mm\:ss"), Color.Green);
