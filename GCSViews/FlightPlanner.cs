@@ -5842,9 +5842,13 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                             sw.Write("\t" +
                                      double.Parse(Commands.Rows[a].Cells[Param1.Index].Value.ToString())
                                          .ToString("0.00000000", new CultureInfo("en-US")));
-                            sw.Write("\t" +
-                                     double.Parse(Commands.Rows[a].Cells[Param2.Index].Value.ToString())
-                                         .ToString("0.00000000", new CultureInfo("en-US")));
+
+                            var param2 = double.Parse(Commands.Rows[a].Cells[Param2.Index].Value.ToString());
+                            if (mode == getCmdID(MAVLink.MAV_CMD.DO_CHANGE_SPEED.ToString()))
+                                param2 /= CurrentState.multiplierspeed;
+
+                            sw.Write("\t" + param2.ToString("0.00000000", new CultureInfo("en-US")));
+
                             sw.Write("\t" +
                                      double.Parse(Commands.Rows[a].Cells[Param3.Index].Value.ToString())
                                          .ToString("0.00000000", new CultureInfo("en-US")));
