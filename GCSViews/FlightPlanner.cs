@@ -54,6 +54,7 @@ using Newtonsoft.Json;
 using MissionPlanner.ArduPilot.Mavlink;
 using System.Drawing.Imaging;
 using SharpKml.Engine;
+using System.Security.Cryptography;
 
 namespace MissionPlanner.GCSViews
 {
@@ -986,13 +987,26 @@ namespace MissionPlanner.GCSViews
             writeKML();
         }
 
+        private void convertSpeedCommandsToConfiguredUnit(List<Locationwp> cmds)
+        {
+            for (int i = 0; i < cmds.Count; i++)
+            {
+                var cmd = cmds[i];
+                if (cmd.id == getCmdID(MAVLink.MAV_CMD.DO_CHANGE_SPEED.ToString()))
+                {
+                    cmd.p2 *= CurrentState.multiplierspeed;
+                    cmds[i] = cmd;
+                }
+            }
+        }
+
         public void readQGC110wpfile(string file, bool append = false)
         {
-
-
             try
             {
                 var cmds = WaypointFile.ReadWaypointFile(file);
+                convertSpeedCommandsToConfiguredUnit(cmds);
+
                 if ((MAVLink.MAV_MISSION_TYPE)cmb_missiontype.SelectedValue == MAVLink.MAV_MISSION_TYPE.FENCE ||
                     (MAVLink.MAV_MISSION_TYPE)cmb_missiontype.SelectedValue == MAVLink.MAV_MISSION_TYPE.RALLY)
                 {
@@ -1347,15 +1361,7 @@ namespace MissionPlanner.GCSViews
 
         public void WPtoScreen(List<Locationwp> cmds)
         {
-            for (int i = 0; i < cmds.Count; i++)
-            {
-                var cmd = cmds[i];
-                if (cmd.id == getCmdID(MAVLink.MAV_CMD.DO_CHANGE_SPEED.ToString()))
-                {
-                    cmd.p2 *= CurrentState.multiplierspeed;
-                    cmds[i] = cmd;
-                }
-            }
+            convertSpeedCommandsToConfiguredUnit(cmds);
 
             try
             {
@@ -1871,6 +1877,7 @@ namespace MissionPlanner.GCSViews
                             var format = MissionFile.ReadFile(file);
 
                             var cmds = MissionFile.ConvertToLocationwps(format);
+                            convertSpeedCommandsToConfiguredUnit(cmds);
 
                             processToScreen(cmds);
 
